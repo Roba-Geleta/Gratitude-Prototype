@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myndful.ly</title>
+    <link rel="icon" href="img/favicon.ico"> 
+
+    <!-- chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"> </script>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+    <!-- fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  
+    <!-- boostrap CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <header></header>
+  <div id="icon-container" class="-none"></div>
+  <div class="container-lg pt-4"> 
+    
+    <div class="card mb-4 p-4">
+      <h2>My Progress</h2>
+      <p>Click on the icons to view entries</p>
+      <div class="chart-container" style="position: relative; height:20rem; width:100%">
+        <canvas id=annotation style="pointer-events:none;position:absolute;z-index:200;width:100%;height:100%;left:0;top:0;right:0;bottom:0;"></canvas>
+        <canvas class="chart" id="chart"></canvas>
+      </div>
+      <div class="my-4 d-flex justify-content-center">
+        <div class="d-flex justify-content-between" style="min-width:40rem; max-width:600px">
+          <button id="btn-prev-week" class="px-4 btn btn-primary ms-3 " id=btn-add-entry title="previous week"><i class="fa fa-caret-left"></i></button>
+          <span id="week-title" class="h4">August 1, 2021 - August 7, 2021</span>
+          <button id="btn-next-week" class="px-4 btn btn-primary ms-3" id=btn-add-entry title="next week"><i class=" fa fa-caret-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4 p-4">
+    <h2>My Activities</h2>
+    <div class="col-md-6">
+      <select name="activity-select" id="activity-select" class="form-select mb-4"></select>
+      <h4>August 2021</h4>
+      <table class="table" id=activity-calendar>
+        <thead>
+          <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div date=2021-08-01>1</div></td>
+            <td><div date=2021-08-02>2</div></td>
+            <td><div date=2021-08-03>3</div></td>
+            <td><div date=2021-08-04>4</div></td>
+            <td><div date=2021-08-05>5</div></td>
+            <td><div date=2021-08-06>6</div></td>
+            <td><div date=2021-08-07>7</div></td>
+          </tr>
+          <tr>
+            <td><div date=2021-08-08>8</div></td>
+            <td><div date=2021-08-09>9</div></td>
+            <td><div date=2021-08-10>10</div></td>
+            <td><div date=2021-08-11>11</div></td>
+            <td><div date=2021-08-12>12</div></td>
+            <td><div date=2021-08-13>13</div></td>
+            <td><div date=2021-08-14>14</div></td>
+          </tr>
+          <tr>
+            <td><div date=2021-08-15>15</div></td>
+            <td><div date=2021-08-16>16</div></td>
+            <td><div date=2021-08-17>17</div></td>
+            <td><div date=2021-08-18>18</div></td>
+            <td><div date=2021-08-19>19</div></td>
+            <td><div date=2021-08-20>20</div></td>
+            <td><div date=2021-08-21>21</div></td>
+          </tr>
+          <tr>
+            <td><div date=2021-08-22>22</div></td>
+            <td><div date=2021-08-23>23</div></td>
+            <td><div date=2021-08-24>24</div></td>
+            <td><div date=2021-08-25>25</div></td>
+            <td><div date=2021-08-26>26</div></td>
+            <td><div date=2021-08-27>27</div></td>
+            <td><div date=2021-08-28>28</div></td>
+          </tr>
+          <tr>
+            <td><div date=2021-08-29>29</div></td>
+            <td><div date=2021-08-30>30</div></td>
+            <td><div date=2021-08-31>31</div></td>
+            <td><div date=2021-09-01 class=text-dark>01</div></td>
+            <td><div date=2021-09-02 class=text-dark>02</div></td>
+            <td><div date=2021-09-03 class=text-dark>03</div></td>
+            <td><div date=2021-09-04 class=text-dark>04</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div> <!-- end container -->
+
+
+    <div id="entry-modal" class="modal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="entry-modal-title">View Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-group d-none">
+              <h4 id=entry-date></h4>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3">
+                <div id="entry-mood-container" class="d-flex flex-row flex-wrap"></div>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label for="entry-notes">Gratitude Entry</label>
+                  <textarea class="form-control" id="entry-notes" rows="8" disabled></textarea>
+
+                  <label class=mt-3>Activities completed:</label>
+                  <div class="d-flex flex-wrap w-100" id=entry-activity-container></div>
+                  
+                  <div class="w-100 d-flex justify-content-between align-items-center">
+                    <div id=entry-nav-container class="d-flex my-3 w-50 align-items-center justify-content-between invisible">
+                      <button id=btn-prev-entry class="btn btn-outline-primary">Prev</button>
+                      <span id=entry-index-label class="user-select-none">1/1</span>
+                      <button id=btn-next-entry class="btn btn-outline-primary">Next</button>
+                    </div>
+                    <div><button class="btn btn-danger float-end" onclick="alert('Deleting is not part of the prototype and is intentionally not implemented')" >Delete Entry</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- goal setting -->
+    <!-- error screens -->
+  <script src="navbar.js"></script>
+  <script src="storage.js"></script>
+  <script src="navigation.js"></script>
+  <script src="goal-setting.js"></script>
+  <script src="emotion_data.js"></script>
+  <script src="view-entries-data.js"></script>
+  <script src="view-entries.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+
+html,body{
+  min-height: 100vh;
+}
+
+body {
+  color: #faf1cfff;
+  padding-bottom: 60px;
+  background-color: #282828;
+}
+
+.view {
+  min-height:80vh;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  animation: fade-in 1s;
+}
+
+h1 {
+  padding-bottom:2rem;
+}
+
+.fade-in{
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.chart{
+   background-color: #faf1cfff; 
+   border-color: #3f6844ff;
+}
+
+.arrow-point-up-anchor{
+  position:relative;
+  opacity: 0;
+  animation: fade-in 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+}
+
+.arrow-point-up-anchor > *{
+  position:absolute;
+  top:0;
+  left:0;
+  width: 12rem;
+  height:10rem;
+
+  background-image: url("img/uparrow.svg");
+  background-size: cover;
+}
+
+.acti-add{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+
+.acti-content{
+  width: 470px;
+  height: 250px;
+  background-color: #faf1cfff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px;
+  /* position: relative; */
+}
+
+.addinput{
+  width: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+.addbutton{
+  margin:10px 10px;
+  bottom: 10;
+}
+
+.Acti-add-title
+{
+  padding-bottom:1rem;
+}
+
+.btn:hover{
+  filter: brightness(0.8);
+  transition:0.2s;
+}
+
+.CustomActiLeft{
+  float: left; 
+  margin-right: 0 !important; 
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.CustomActiRight{
+  float: left; 
+  margin-left: 0 !important; 
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#container{
+  position:relative;
+}
+.view > .progress {
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  z-index: -1;
+}
+.actiRemoveButton:hover{
+  background-color: red;
+}
+
+.actirows
+{
+  padding-right: 20px;
+  text-align: left center;
+  
+}
+
+.acticolm
+{
+  padding-bottom: 20px;
+  font-size: large;
+}
+
+.actitable
+{
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+  display: block;
+}
+
+.view > .progress-tracker {
+  margin-top:-0.5rem;
+  width: 100%;
+  z-index: -1;
+} 
+.btn-square{
+  width: 5rem;
+  height: 5rem;
+  padding:0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color:black;
+}
+
+.btn-square:not(div){
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-square img{
+  filter: invert(0);
+  height:3rem;
+  transition: 0.15s;
+}
+input:checked + .btn-square {
+  background-color: #00a8ff !important;
+  color:white;
+}
+.btn-square:not(div):hover > img, input:checked + .btn-square > img {
+  filter: invert(1);
+}
+
+#activity-calendar {
+  width:100%;
+  color: #faf1cfff;
+}
+
+#activity-calendar td>div {
+  height:3rem;
+  width:3rem;
+  text-align: center;
+  line-height: 3rem;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+#activity-calendar .activity-success div {
+  background-color: #3f6844ff !important;
+}
+
+#activity-calendar td {
+  position:relative;
+  width:13%!important;
+  z-index: 1;
+}
+
+#activity-calendar td.activity-success + td.activity-success::before {
+  display:block;
+  content: "";
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: -50%;
+  width: 100%;
+  height: 3rem;
+  z-index: -1;
+  border-top:solid #3f6844ff 1rem;
+  border-bottom:solid #3f6844ff 1rem;
+}
+#activity-calendar td.activity-success + td.activity-success::after {
+  display:block;
+  content: "";
+  position:absolute;
+  margin-top:-2.5rem;
+  left: -25%;
+  width: 50%;
+  height: 2rem;
+  z-index: -1;
+  background-color: #3f6844ff;
+}
+.card {
+  background-color: #282828;
+  border: 1px solid #3f6844ff;
+}
+
+.navbar-menu-button:hover{
+  background-color: rgba(0, 0, 0, 0.658);
+  outline: none;
+  outline-color: none;
+  border-color: none !important;
+}
+.modal-content {
+  background-color: #282828;
+}
+.menu-separation{
+  padding: 5px;
+}
+
+.form-control, .form-select {
+  background-color: #faf1cfff
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #efefe9;
+  opacity: 1;
+}
+
+.btn-close {
+  filter:invert();
+}
+
+.form-control:focus {
+  background-color: #faf1cfff;
+}
+
+.buttonsMargin{
+  margin-bottom: 0.5rem !important;
+}
